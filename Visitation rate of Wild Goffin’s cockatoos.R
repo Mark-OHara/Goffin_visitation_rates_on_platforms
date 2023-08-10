@@ -1,9 +1,9 @@
-############################################################################################################
-##								Visitation rates of Wild Goffin’s cockatoos								  ##
-##																										  ##
-## 					Mark O'Hara, Alice M. I. Auersperg, Ludwig Huber, Dewi M. Prawiradilaga				  ##
-##						 					& Berenika Mioduszewska										  ##
-############################################################################################################
+##########################################################################################################
+##				Visitation rates of Wild Goffin’s cockatoos				##
+##													##
+##	 	Mark O'Hara, Alice M. I. Auersperg, Ludwig Huber, Dewi M. Prawiradilaga			##
+##					& Berenika Mioduszewska						##
+##########################################################################################################
 
 ############################################################################################################
 ## loading required packages ###############################################################################
@@ -20,7 +20,7 @@ library(patchwork)
 ############################################################################################################
 ## loading data and custom functions #######################################################################
 ############################################################################################################
-setwd("~/[download_directory]")#set working directory to the download directoy or directory containing dataset
+setwd("~/[download_directory]")#set the working directory to the download directory or directory containing the datasets
 source('Functions.r') # load additional custom functions for model plotting
 datafull <-read.table(file="Data.txt", header=TRUE,na.strings="na", stringsAsFactors=T) # load data for visitation rates and weather data
 wdat<-read.table(file="Weather.txt", header=TRUE,na.strings="na", stringsAsFactors=T) # load observed weather data for study periode
