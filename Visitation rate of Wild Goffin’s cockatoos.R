@@ -22,7 +22,6 @@ library(patchwork)
 ############################################################################################################
 setwd("~/[download_directory]")#set working directory to the download directoy or directory containing dataset
 source('Functions.r') # load additional custom functions for model plotting
-load("Visitations.RData")
 datafull <-read.table(file="Data.txt", header=TRUE,na.strings="na", stringsAsFactors=T) # load data for visitation rates and weather data
 wdat<-read.table(file="Weather.txt", header=TRUE,na.strings="na", stringsAsFactors=T) # load observed weather data for study periode
 
