@@ -10,7 +10,7 @@ Title of Dataset: Datasets and R-code for the publication: "A novel platform to 
 
 Author Information A. Principal Investigator Contact Information Name: Mark O'Hara Institution: Messerli Research Institute, University of Veterinary Medicine Vienna, Austria Address: Veterinärplatz 1, 1210 Vienna, Austria Email: mark.ohara@vetmeduni.ac.at
 
-Date of data collection: 2/2019 to 3/2019
+Date of data collection: 04/2022 and 03-04/2023
 
 Geographic location of data collection: Tanimbar Islands, Indonesia (S7.81321°,E131.37395°)
 
