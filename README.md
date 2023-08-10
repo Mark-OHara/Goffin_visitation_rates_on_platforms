@@ -49,22 +49,22 @@ DATA-SPECIFIC INFORMATION FOR: Data.tx
 Number of variables: 16
 Number of cases/rows: 7967
 Variable List:
- $ Location   : Factor with 8 levels
- $ Bout       : Factor with 2 levels
- $ Filename   : Factor with 7967 levels
- $ Date       : Factor with 62 levels
- $ Time       : Factor wiht 753 levels
- $ Manualcount: integer
- $ datetime   : Factor with 7932 levels
- $ timemin    : integer
- $ Playback   : Factor wihth 2 levels
- $ daysbait   : integer
- $ Temp       : numerical
- $ Humidity   : integer
- $ Lux        : numerical
- $ UVI        : integer
- $ Rain       : numerical
- $ Wind       : numumerical
+ - Location   : Factor with 8 levels
+ - Bout       : Factor with 2 levels
+ - Filename   : Factor with 7967 levels
+ - Date       : Factor with 62 levels
+ - Time       : Factor wiht 753 levels
+ - Manualcount: integer
+ - datetime   : Factor with 7932 levels
+ - timemin    : integer
+ - Playback   : Factor wihth 2 levels
+ - daysbait   : integer
+ - Temp       : numerical
+ - Humidity   : integer
+ - Lux        : numerical
+ - UVI        : integer
+ - Rain       : numerical
+ - Wind       : numumerical
 
 
 DATA-SPECIFIC INFORMATION FOR: Weather.txt
@@ -72,10 +72,10 @@ DATA-SPECIFIC INFORMATION FOR: Weather.txt
 Number of variables: 8
 Number of cases/rows: 19660
 Variable List:
- $ Temp    : numerical
- $ Hum     : integer
- $ Lux     : numerical
- $ UVI     : integer
- $ Rain    : numerical
- $ Wind    : numerical
- $ timemin : integer
+ - Temp    : numerical
+ - Hum     : integer
+ - Lux     : numerical
+ - UVI     : integer
+ - Rain    : numerical
+ - Wind    : numerical
+ - timemin : integer
