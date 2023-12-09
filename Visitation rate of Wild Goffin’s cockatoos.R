@@ -201,7 +201,7 @@ summary(xx)
 ### plotting temporal foraging bouts based on the model descriptive in terms of images w/wo goffins
 ggplot(data,aes(x=timemin/60,color=as.factor(nz),fill=as.factor(nz)))+geom_point(data=xx,aes(timemin/60,x,size=N),alpha=.05)+scale_size_continuous(range = c(1,7),name="Number of\nimages")+geom_density(mapping = aes(y = after_stat(count)),alpha=.1,adjust=.3)+scale_x_discrete(limits=factor(0:24),name="Time of day [h]")+ylab("Total # of images")+scale_fill_discrete("Images",breaks=c(0,1),labels=c("without Goffins","with Goffins"))+scale_color_discrete("Images",breaks=c(0,1),labels=c("without Goffins","with Goffins"))+	theme_minimal()
 #save the graph as pdf
-ggsave("Figx1._daily.visits.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 20  , height = 8, units = "cm", dpi = 500)
+ggsave("Fig.2_daily.visits.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 20  , height = 8, units = "cm", dpi = 500)
 
 ################################
 ### plotting effect of intrinsic weather variation
@@ -230,10 +230,10 @@ geom_point(data=xx,aes(PC1,x,size=N),alpha=.1)+scale_size_continuous(range = c(1
 	geom_line(data= plot.PC1,aes(x, yupr),alpha=.6,lwd=1,lty=3,inherit.aes=F)+
 	geom_line(data= plot.PC1,aes(x, ylwr),alpha=.6,lwd=1,lty=3,inherit.aes=F)+
 	geom_ribbon(data= plot.PC1,aes(x,ymin=ylwr, ymax=yupr), alpha=0.2,inherit.aes=F)+
-	labs(x="PC1",y="Probability for visiting a platform")+
+	labs(x="PC1",y="Probability of visiting a platform")+
 	theme_minimal()
 #save the graph as pdf
-ggsave("Figx2_PC1visits.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 20  , height = 10, units = "cm", dpi = 500)
+ggsave("Fig.3_PC1visits.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 20  , height = 10, units = "cm", dpi = 500)
 
 ############################################################################################################
 ####  plotting effects of time on number of individuals (conditional/poisson model)
@@ -268,12 +268,12 @@ p2<-ggplot(wdat, aes(time.b,Temp)) + geom_smooth(color=scico(1,begin=0.6,end=0.6
 p3<-ggplot(wdat, aes(time.b,Hum)) +geom_point(data=to.plot,aes(x=time.b,y=Manualcount*10,size=x),alpha=.1,show.legend=T)+geom_smooth(data=wdat,aes(x=time.b,y=Temp*100/30),color=scico(1,begin=0.6,end=0.6,palette="lajolla"),fill=scico(1,alpha=.2,begin=0.6,end=0.6,palette="lajolla"))+geom_smooth(color=scico(1,begin=0.1,end=0.1,palette="imola"),fill=scico(1,alpha=0.2,begin=0.1,end=0.1,palette="imola"))+geom_smooth(data=wdat,aes(x=time.b,y=Lux/1000),color=scico(1,begin=0.2,end=0.2,palette="lajolla"),fill=scico(1,alpha=0.2,begin=0.2,end=0.2,palette="lajolla")) +scale_x_continuous("Time of day [h]",breaks=c(0:24))+scale_y_continuous(position="left",name="Humidity [%]",sec.axis=sec_axis(trans=(~./10),"Individuals feeding",breaks=c(0,1,2,3,4,5,6,7,8,9,10,11)))+scale_size_continuous(range = c(2, 7),name="Number of\ntriggered images")+theme_minimal()+theme(axis.line.y.left = element_line(color = scico(1,begin=0.2,end=0.2,palette="imola")), axis.ticks.y.left = element_line(color = scico(1,begin=0,end=0.2,palette="imola")),       axis.text.y.left = element_text(color = scico(1,begin=0.2,end=0.2,palette="imola")),         axis.title.y.left = element_text(color = scico(1,begin=0.2,end=0.2,palette="imola")))
 
 #combining graph labels
-Fig.3b<- wrap_elements(get_plot_component(p2, "ylab-l")) +
+Fig.4b<- wrap_elements(get_plot_component(p2, "ylab-l")) +
   wrap_elements(get_y_axis(p2)) +
   wrap_elements(get_plot_component(p1, "ylab-l")) +
   wrap_elements(get_y_axis(p1)) +
   p3 + 
-  plot_layout(widths = c(1.2, 0.2, 1.2, .2, 40))
+  plot_layout(widths = c(1, 0.2, 1.2, .2, 40))
 
 ################################
 ### plotting effect of intrinsic weather variation
@@ -296,7 +296,7 @@ plot.pc=data.frame(x=plot.pcxvals,
 				yupr=boot.respc.plot$ci.predicted$upper.cl) #make dataframe with model and lines for CI
 
 # plot data and bootstrapped model
-Fig.3a<-ggplot(data,aes(PC1,Manualcount))+
+Fig.4a<-ggplot(data,aes(PC1,Manualcount))+
 geom_point(data=respc,aes(PC1,x,size=N),alpha=.4)+scale_size_continuous(range = c(2, 7),name="Number of\ntriggered images")+
 	geom_line(data= plot.pc,aes(x, y),lwd=1,inherit.aes=F)+
 	geom_line(data= plot.pc,aes(x, yupr),alpha=.6,lwd=1,lty=3,inherit.aes=F)+
@@ -305,11 +305,11 @@ geom_point(data=respc,aes(PC1,x,size=N),alpha=.4)+scale_size_continuous(range = 
 	labs(x="Daily weather variation[PC1]",y="Number of individuals feeding")+
 	theme_minimal()
 
-plot_grid(Fig.3a, Fig.3b,  
+plot_grid(Fig.4a, Fig.4b,  
           labels = c("A", "B"),
           ncol = 1, nrow = 2)
 
-ggsave("Fig.x3_hourlyindividualsbyweather.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 23  , height = 20, units = "cm", dpi = 500)
+ggsave("Fig.4_hourlyindividualsbyweather.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 30  , height = 20, units = "cm", dpi = 500)
 
 ################################
 ### plotting effect of rain
@@ -332,13 +332,13 @@ plot.rain=data.frame(x=plot.rainxvals,
 				yupr=boot.resrain.plot$ci.predicted$upper.cl) #make dataframe with model and lines for CI
 		
 # plot data and bootstrapped model
-Fig.4a<-ggplot(data,aes(Rain,Manualcount))+
+Fig.5a<-ggplot(data,aes(Rain,Manualcount))+
 geom_point(data=resrain,aes(Rain,x,size=N),alpha=.4)+scale_size_continuous(range = c(2, 7),name="Number of\ntriggered images")+
 		geom_line(data= plot.rain,aes(x, y),lwd=1,inherit.aes=F)+
 		geom_line(data= plot.rain,aes(x, yupr),alpha=.6,lwd=1,lty=3,inherit.aes=F)+
 		geom_line(data= plot.rain,aes(x, ylwr),alpha=.6,lwd=1,lty=3,inherit.aes=F)+
 		geom_ribbon(data= plot.rain,aes(x,ymin=ylwr, ymax=yupr), alpha=0.2,inherit.aes=F)+
-		labs(x="Rainfall[mm/h]",y="Number of individuals feeding")+
+		labs(x="Rainfall [mm/h]",y="Number of individuals feeding")+
 		theme_minimal()
 		
 ################################
@@ -365,7 +365,7 @@ plot.daysbait=data.frame(x=plot.dbxvals,
 				yupr=boot.resdep.plot$ci.predicted$upper.cl) #make dataframe with model and lines for CI
 
 # plot data and bootstrapped model
-Fig.4b<-ggplot(data,aes(daysbait,Manualcount))+
+Fig.5b<-ggplot(data,aes(daysbait,Manualcount))+
 geom_point(data=resdep,aes(daysbait,x,size=N),alpha=.4)+scale_size_continuous(range = c(1, 7),name="Number of\ntriggered images")+
 	geom_line(data= plot.daysbait,aes(x, y),lwd=1,inherit.aes=F)+
 	geom_line(data= plot.daysbait,aes(x, yupr),alpha=.6,lwd=1,lty=3,inherit.aes=F)+
@@ -373,11 +373,11 @@ geom_point(data=resdep,aes(daysbait,x,size=N),alpha=.4)+scale_size_continuous(ra
 	geom_ribbon(data= plot.daysbait,aes(x,ymin=ylwr, ymax=yupr), alpha=0.2,inherit.aes=F)+
 	labs(x="Days after baiting",y="Number of individuals feeding")+
 	theme_minimal()
-plot_grid(Fig.4a, Fig.4b,  
+plot_grid(Fig.5a, Fig.5b,  
           labels = c("A", "B"),
           ncol = 1, nrow = 2)
 
-ggsave("Fig.x4_Rain&Daysafterbaiting.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 23  , height = 20, units = "cm", dpi = 500)
+ggsave("Fig.5_Rain&Daysafterbaiting.pdf", plot = last_plot(), device = NULL, path = NULL, scale = 1, width = 23  , height = 20, units = "cm", dpi = 500)
 
 
 ####
